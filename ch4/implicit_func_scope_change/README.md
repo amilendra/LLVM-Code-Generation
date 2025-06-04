@@ -6,7 +6,7 @@ This is true unsurprisingly for instance with global variables, but it happens a
 
 To see this in action, configure, build and run this example by following the next steps:
 ```bash
-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=<path/to/llvm/install>/lib/cmake/llvm -Bbuild .
+cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=$TOOLS_DIR/LLVM-20.1.1-Linux-X64/lib/cmake/llvm -Bbuild .
 ninja -Cbuild
 ./build/implicit_change_of_scope
 ```

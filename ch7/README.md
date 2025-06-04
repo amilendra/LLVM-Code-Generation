@@ -18,7 +18,7 @@ To run `check_vec_int_ty.cpp` follow the steps below.
 ## Configuring your build environment ##
 
 ```bash
-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=<path/to/llvm/install>/lib/cmake/llvm -Bbuild .
+cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=$TOOLS_DIR/LLVM-20.1.1-Linux-X64/lib/cmake/llvm -Bbuild .
 ```
 
 ## To build ##

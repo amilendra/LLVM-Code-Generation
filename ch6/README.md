@@ -7,12 +7,12 @@ The goal here is to familiarize yourself with the TableGen syntax and understand
 ## Configuring your build environment ##
 
 ```bash
-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=<path/to/llvm/install>/lib/cmake/llvm -Bbuild .
+cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=$TOOLS_DIR/LLVM-20.1.1-Linux-X64/lib/cmake/llvm -Bbuild .
 ```
 
 This will initialize your build directory in `build` (the `-B` option) with Ninja (`-G` option).
 
-You must have a version of LLVM installed at `<path/to/llvm/install>` for this to succeed.
+You must have a version of LLVM installed at `$TOOLS_DIR/LLVM-20.1.1-Linux-X64` for this to succeed.
 Either build and install your own llvm (with the `install` target from your LLVM build) or install an [official LLVM release](https://releases.llvm.org/) package.
 
 ## Build ##

@@ -15,12 +15,12 @@ You can look at `ch3/build_ir` for a correct way of doing the `buildModule` impl
 ## Configure your build directory ##
 
 ```bash
-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=<path/to/llvm/install>/lib/cmake/llvm -Bbuild .
+cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=$TOOLS_DIR/LLVM-20.1.1-Linux-X64/lib/cmake/llvm -Bbuild .
 ```
 
 This will initialize your build directory in `build` (the `-B` option) with Ninja (`-G` option).
 
-You must have a version of LLVM installed at `<path/to/llvm/install>` for this to succeed.
+You must have a version of LLVM installed at `$TOOLS_DIR/LLVM-20.1.1-Linux-X64` for this to succeed.
 Either build and install your own llvm (with the `install` target from your LLVM build) or install an [official LLVM release](https://releases.llvm.org/) package.
 
 ## Build ##
@@ -47,7 +47,7 @@ At this point it should crash.
 
 Configure your build with address sanitizer enabled and build:
 ```bash
-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=<path/to/llvm/install>/lib/cmake/llvm -Bbuild_w_asan . -DCMAKE_CXX_FLAGS=-fsanitize=address
+cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=$TOOLS_DIR/LLVM-20.1.1-Linux-X64/lib/cmake/llvm -Bbuild_w_asan . -DCMAKE_CXX_FLAGS=-fsanitize=address
 ninja -C build_w_asan
 ```
 

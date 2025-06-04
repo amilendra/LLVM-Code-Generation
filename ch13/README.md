@@ -2,7 +2,7 @@ In this chapter you can discover the transformations performed by some of the op
 
 To see that in action, first setup your build directory:
 ```bash
-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=<path/to/llvm/install>/lib/cmake/llvm -Bbuild .
+cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DLLVM_DIR=$TOOLS_DIR/LLVM-20.1.1-Linux-X64/lib/cmake/llvm -Bbuild .
 ```
 
 Then, when you'll invoke `ninja`, it will run all the passes exercised in this folder.
