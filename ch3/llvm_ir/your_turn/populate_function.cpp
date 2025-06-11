@@ -57,4 +57,44 @@ using namespace llvm;
 //
 // declare void @bar(i32)
 // declare i32 @baz(...)
-std::unique_ptr<Module> myBuildModule(LLVMContext &Ctxt) { return nullptr; }
+std::unique_ptr<Module> myBuildModule(LLVMContext &Ctxt) {
+  errs() << "Test"
+         << "\n";
+  std::unique_ptr<Module> m = std::make_unique<Module>("input.c", Ctxt);
+  m->getOrInsertFunction("baz", Type::getInt32Ty(Ctxt));
+  m->getOrInsertFunction("bar", Type::getVoidTy(Ctxt), Type::getInt32Ty(Ctxt));
+  // AttributeList AL_foo = {Type::getInt32Ty(Ctxt), Type::getInt32Ty(Ctxt)};
+
+  // Define the function type: void (int32, int32)
+  FunctionType *fooType = FunctionType::get(
+      Type::getVoidTy(Ctxt),                            // return type
+      {Type::getInt32Ty(Ctxt), Type::getInt32Ty(Ctxt)}, // argument types
+      false                                             // not variadic
+  );
+  // m->getOrInsertFunction("foo", fooType);
+  // Create the function
+  Function *fooFunc = Function::Create(fooType, Function::ExternalLinkage,
+                                       "foo", // function name
+                                       *m // the module it will be inserted into
+  );
+  // for(Function &MyFunction: MyModule) {
+  // // Do something with MyFunction.
+  //      errs() << "Test" << "\n";
+  // }
+  BasicBlock *BB = BasicBlock::Create(Ctxt, "bb", fooFunc);
+
+  IRBuilder<> Builder(Ctxt);
+
+  // Allocate space on the stack for an int32 (local variable)
+  AllocaInst *Alloca =
+      Builder.CreateAlloca(Type::getInt32Ty(Ctxt), nullptr, "myVar");
+
+  // Optionally store a value into it
+  Value *Const42 = ConstantInt::get(Type::getInt32Ty(Ctxt), 42);
+  Builder.CreateStore(Const42, Alloca);
+
+  // Insert a return void instruction
+  ReturnInst::Create(Ctxt, BB);
+
+  return m;
+}
