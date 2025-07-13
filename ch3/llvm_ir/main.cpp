@@ -31,5 +31,5 @@ int main(int argc, char **argv) {
     }
   }
 
-  return !hadError;
+  return hadError;
 }

@@ -144,4 +144,10 @@ _Quentin Colombet_ is a veteran LLVM contributor specializing in compiler backen
 
 ## Errata
 
+* Page 6: Under the heading _Identifying the right version of the tools_, in step 1 the hyperlink on the URL [https://releases.llvm.org/] in the digital formats redirects to [https://www.python.org/downloads/]. Please copy and paste the link [https://releases.llvm.org/] in the browser to navigate to the correct webpage.
 * Page 11: In the command `$ git clone https://github.com/llvm/llvm/project.git`, the URL should be `https://github.com/llvm/llvm-project.git`. Therefore, the first line becomes `$ git clone https://github.com/llvm/llvm-project.git`.
+* Page 71: In the descriptipn below _Figure 3.4_, the sentence "Because of that, inserting a store in A and **reloading in B** means that the whole dotted region needs to play nicely with this memory location." should be "Because of that, inserting a store in A and **reloading in C** means that the whole dotted region needs to play nicely with this memory location."
+* Page 106: In _Figure 4.6_, the block at the center labelled as "excluding" should be "exiting".
+* Page 361: The term `MCInstrPrinter` should be `MCInstPrinter`.
+* Page 363: Both the instances of the term `XXXInstrPrinter` should be `XXXInstPrinter`.
+* Page 455: In _Table 17.1_, under the **Original code** column on the left side, the line `%vec1 = insertelement <2 x i32> %vec, i32 %a, i32 1` should be `%vec1 = insertelement <2 x i32> %vec, i32 %b, i32 1` (i.e. **%a** should be **%b**).
